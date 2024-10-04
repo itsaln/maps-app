@@ -4,12 +4,15 @@ import {
 	Map,
 	Placemark,
 	YMaps,
-	ZoomControl
+	ZoomControl,
+	RouteButton
 } from 'react-yandex-maps'
 
-import styles from './YMaps.module.scss'
+interface IYMapsComponent {
+	className?: string
+}
 
-const YMapsComponent: FC = () => {
+const YMapsComponent: FC<IYMapsComponent> = ({ className }) => {
 	return (
 		<YMaps
 			query={{
@@ -23,7 +26,7 @@ const YMapsComponent: FC = () => {
 				}}
 				// onLoad={(ymaps) => console.log('loaded:---', ymaps)}
 				// onError={(error) => console.log('error:---', error)}
-				className={styles.map}
+				className={className}
 			>
 				<Placemark geometry={[41.259786, 69.223929]} />
 				<ZoomControl
@@ -32,6 +35,11 @@ const YMapsComponent: FC = () => {
 					}}
 				/>
 				<GeolocationControl
+					options={{
+						float: 'right'
+					}}
+				/>
+				<RouteButton
 					options={{
 						float: 'right'
 					}}
