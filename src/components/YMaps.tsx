@@ -4,48 +4,43 @@ import {
 	Map,
 	Placemark,
 	YMaps,
-	ZoomControl,
-	RouteButton
+	ZoomControl
 } from 'react-yandex-maps'
 
-interface IYMapsComponent {
-	className?: string
-}
+import styles from './YMaps.module.scss'
+import './_ymaps.scss'
 
-const YMapsComponent: FC<IYMapsComponent> = ({ className }) => {
+const YMapsComponent: FC = () => {
 	return (
-		<YMaps
-			query={{
-				lang: 'ru_RU'
-			}}
-		>
-			<Map
-				state={{
-					center: [41.259786, 69.223929],
-					zoom: 15
+		<div className="ymaps">
+			<YMaps
+				query={{
+					lang: 'ru_RU'
 				}}
-				// onLoad={(ymaps) => console.log('loaded:---', ymaps)}
-				// onError={(error) => console.log('error:---', error)}
-				className={className}
 			>
-				<Placemark geometry={[41.259786, 69.223929]} />
-				<ZoomControl
-					options={{
-						size: 'small'
+				<Map
+					state={{
+						center: [41.259786, 69.223929],
+						zoom: 15
 					}}
-				/>
-				<GeolocationControl
-					options={{
-						float: 'right'
-					}}
-				/>
-				<RouteButton
-					options={{
-						float: 'right'
-					}}
-				/>
-			</Map>
-		</YMaps>
+					// onLoad={(ymaps) => console.log('loaded:---', ymaps)}
+					// onError={(error) => console.log('error:---', error)}
+					className={styles.ymap}
+				>
+					<Placemark geometry={[41.259786, 69.223929]} />
+					<ZoomControl
+						options={{
+							size: 'small'
+						}}
+					/>
+					<GeolocationControl
+						options={{
+							float: 'right'
+						}}
+					/>
+				</Map>
+			</YMaps>
+		</div>
 	)
 }
 

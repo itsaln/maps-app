@@ -1,6 +1,22 @@
-.map {
-  width: 600px;
-  height: 400px;
+.ymap {
+  position: relative;
+  //filter: grayscale(1);
+  width: 414px;
+  height: 820px;
+  margin-top: 32px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    box-shadow: 0 16px 44px 33px rgba(0, 0, 0, 1);
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+  }
 }
